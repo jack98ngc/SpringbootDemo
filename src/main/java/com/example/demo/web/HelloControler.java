@@ -31,7 +31,7 @@ public class HelloControler {
     
     @GetMapping("/books")
 //    @ResponseBody
-    public Object getAll(@RequestParam("page") int page, @RequestParam("size") int size) {
+    public Object getAll(@RequestParam("page") int page, @RequestParam(value="size", defaultValue="5") int size) {
         
         Map<String, Object> book = new HashMap<>();
         book.put("name","互聯網世界觀");
