@@ -12,7 +12,9 @@ import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 //@Controller
@@ -36,6 +38,7 @@ public class HelloControler {
         return map;
     }
     
+
     @GetMapping("/{id}/books/{username:[a-z_]+}")
     public Object getOne(@PathVariable long id, @PathVariable String username) {
         
@@ -48,4 +51,16 @@ public class HelloControler {
         book.put("username",username);
         return book;
     }
+    
+    @PostMapping("/books")
+    public Object post(@RequestParam("name") String name,
+                       @RequestParam("author") String author,
+                       @RequestParam("isbn") String isbn){
+        Map<String, Object> book = new HashMap<>();
+        book.put("name",name);
+        book.put("author",author);
+        book.put("isbn",isbn);
+        return book;
+    }
+                         
 }
