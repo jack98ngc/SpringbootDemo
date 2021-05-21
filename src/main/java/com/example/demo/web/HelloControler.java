@@ -10,14 +10,14 @@ package com.example.demo.web;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-//@RestController
-@RequestMapping("/api")
+//@Controller
+@RestController
+@RequestMapping("/api/v1")
 public class HelloControler {
 
     @RequestMapping("/say")
@@ -26,7 +26,7 @@ public class HelloControler {
     }
     
     @GetMapping("/books")
-    @ResponseBody
+//    @ResponseBody
     public Object getAll() {
         
         Map<String, Object> map = new HashMap<>();
@@ -34,5 +34,17 @@ public class HelloControler {
         map.put("age", "18");
         
         return map;
+    }
+    
+    @GetMapping("/books/{id}")
+    public Object getOne(@PathVariable long id) {
+        
+        System.out.println(" --- id: " + id );
+        
+        Map<String, Object> book = new HashMap<>();
+        book.put("name","互聯網世界觀");
+        book.put("isbn","9877234263432");
+        book.put("author","李善友");
+        return book;
     }
 }
