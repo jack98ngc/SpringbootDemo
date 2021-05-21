@@ -7,22 +7,16 @@
  */
 package com.example.demo.web;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloControler {
 
-    @RequestMapping("/say")
+    
+    @GetMapping("/say") //@PostMapping, @DeleteMapping, @PutMapping...... 
     public String say() {
         return "Hello Sprig Boot";
     }
     
-    @RequestMapping(value="/sayWithMethod", method=RequestMethod.GET)
-    /* NOTE: @RequestMapping(value="/sayWithMethod", method=RequestMethod.GET) equal to @GetMapping("sayWithMethod") */
-    public String sayWithMethod() {
-        return "Hello Sprig Boot with RequestMethod.GET";
-    }
-
 }
