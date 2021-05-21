@@ -37,9 +37,9 @@ public class HelloControler {
     }
     
     @GetMapping("/books/{id}")
-    public Object getOne(@PathVariable long id) {
+    public Object getOne(@PathVariable("id") long bid) {
         
-        System.out.println(" --- id: " + id );
+        System.out.println(" --- id: " + bid );
         
         Map<String, Object> book = new HashMap<>();
         book.put("name","互聯網世界觀");
