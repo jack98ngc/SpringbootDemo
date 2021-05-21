@@ -7,7 +7,9 @@
  */
 package com.example.demo.web;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,13 +31,27 @@ public class HelloControler {
     
     @GetMapping("/books")
 //    @ResponseBody
-    public Object getAll() {
+    public Object getAll(@RequestParam("page") int page, @RequestParam("size") int size) {
         
-        Map<String, Object> map = new HashMap<>();
-        map.put("name", "hello");
-        map.put("age", "18");
+        Map<String, Object> book = new HashMap<>();
+        book.put("name","互聯網世界觀");
+        book.put("isbn","9877234263432");
+        book.put("author","李善友");
+        Map<String, Object> book2 = new HashMap<>();
+        book2.put("name","程序員的思維修煉");
+        book2.put("isbn","1234261234261234");
+        book2.put("author","李善友");
         
-        return map;
+        List<Map> contents = new ArrayList<>();
+        contents.add(book);
+        contents.add(book2);
+        
+        Map<String, Object> pagemap = new HashMap<>();
+        pagemap.put("page", page);
+        pagemap.put("size", size);
+        pagemap.put("contents", contents);
+        
+        return pagemap;
     }
     
 
