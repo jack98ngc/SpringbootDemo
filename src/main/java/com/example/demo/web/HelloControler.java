@@ -36,15 +36,16 @@ public class HelloControler {
         return map;
     }
     
-    @GetMapping("/books/{id}")
-    public Object getOne(@PathVariable("id") long bid) {
+    @GetMapping("/books/{id}/{username}")
+    public Object getOne(@PathVariable long id, @PathVariable String username) {
         
-        System.out.println(" --- id: " + bid );
+        System.out.println(" --- id: " + id +" username: " + username);
         
         Map<String, Object> book = new HashMap<>();
         book.put("name","互聯網世界觀");
         book.put("isbn","9877234263432");
         book.put("author","李善友");
+        book.put("username",username);
         return book;
     }
 }
