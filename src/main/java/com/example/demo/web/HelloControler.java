@@ -36,7 +36,7 @@ public class HelloControler {
         return map;
     }
     
-    @GetMapping("/books/{id}/{username}")
+    @GetMapping("/{id}/books/{username}")
     public Object getOne(@PathVariable long id, @PathVariable String username) {
         
         System.out.println(" --- id: " + id +" username: " + username);
