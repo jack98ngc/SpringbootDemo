@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 //@Controller
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/api/v1")
 public class HelloControler {
 
     @RequestMapping("/say")
@@ -54,17 +55,24 @@ public class HelloControler {
         return pagemap;
     }
     
-
-    @GetMapping("/{id}/books/{username:[a-z_]+}")
-    public Object getOne(@PathVariable long id, @PathVariable String username) {
-        
-        System.out.println(" --- id: " + id +" username: " + username);
+    @Value("${book.name}")
+    private String name;
+    @Value("${book.author}")
+    private String author;
+    @Value("${book.isbn}")
+    private String isbn;
+    @Value("${book.description}")
+    private String description;
+    
+    
+    @GetMapping("/books/{id}")
+    public Object getOne(@PathVariable long id) {
         
         Map<String, Object> book = new HashMap<>();
-        book.put("name","互聯網世界觀");
-        book.put("isbn","9877234263432");
-        book.put("author","李善友");
-        book.put("username",username);
+        book.put("name",name);
+        book.put("isbn",isbn);
+        book.put("author",author);
+        book.put("description",description);
         return book;
     }
     
