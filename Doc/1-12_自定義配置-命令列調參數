@@ -1,0 +1,6 @@
+1. 打包成jar
+    mvn packgae
+    
+    
+2. 執行並調整參數
+    java -jar spring-boot-demo-0.0.1-SNAPSHOT.jar --sprint.profiles.active=dev        
