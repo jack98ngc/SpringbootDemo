@@ -12,13 +12,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.domain.Book;
 
 //@Controller
 @RestController
@@ -55,24 +57,12 @@ public class HelloControler {
         return pagemap;
     }
     
-    @Value("${book.name}")
-    private String name;
-    @Value("${book.author}")
-    private String author;
-    @Value("${book.isbn}")
-    private String isbn;
-    @Value("${book.description}")
-    private String description;
-    
+    @Autowired
+    private Book book;
     
     @GetMapping("/books/{id}")
     public Object getOne(@PathVariable long id) {
         
-        Map<String, Object> book = new HashMap<>();
-        book.put("name",name);
-        book.put("isbn",isbn);
-        book.put("author",author);
-        book.put("description",description);
         return book;
     }
     
