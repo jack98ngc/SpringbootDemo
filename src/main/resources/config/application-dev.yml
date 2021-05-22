@@ -1,0 +1,12 @@
+
+server:
+  port: 8080
+#  servlet:
+#    context-path: /api
+
+logging:
+  level:
+    root: debug
+    com:
+      example: DEBUG
+  file: logs/debug.log
