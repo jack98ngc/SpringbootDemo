@@ -10,3 +10,16 @@ logging:
     com:
       example: info
   file: logs/my.log
+  
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/book?useUnicode=true&characterEncoding=utf-8
+    username: jack98
+    password: 1qaz@WSX
+    
+  jpa:
+    hibernate: 
+      ddl-auto: create
+    show-sql: true
+  

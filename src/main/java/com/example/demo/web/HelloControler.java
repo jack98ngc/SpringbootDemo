@@ -57,13 +57,10 @@ public class HelloControler {
         return pagemap;
     }
     
-    @Autowired
-    private Book book;
-    
     @GetMapping("/books/{id}")
     public Object getOne(@PathVariable long id) {
         
-        return book;
+        return null;
     }
     
     @PostMapping("/books")

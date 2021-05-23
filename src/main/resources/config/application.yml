@@ -1,7 +1,7 @@
 
 spring:
   profiles:
-    active: pro		#multiple=>     active: pro, dbConf
+    active: dev		#multiple=>     active: pro, dbConf
 
 book:
   name: 互聯網世界觀
