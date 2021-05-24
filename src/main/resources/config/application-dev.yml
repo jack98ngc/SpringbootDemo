@@ -7,16 +7,18 @@ server:
 logging:
   level:
     root: info
-    com:
-      example: DEBUG
+    com.example: DEBUG
   file: logs/debug.log
   
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/book?useUnicode=true&characterEncoding=utf-8
-    username: jack98
+    username: root
     password: 1qaz@WSX
+  jackson:
+    serialization:
+      fail-on-empty-beans: false  # To resolve "Could not write JSON" issue when hibernate getOne(id)
     
   jpa:
     hibernate: 
