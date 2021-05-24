@@ -2,7 +2,9 @@
 spring:
   profiles:
     active: dev		#multiple=>     active: pro, dbConf
-
+  thymeleaf:
+    mode: HTML
+    
 book:
   name: 互聯網世界觀
   author: 李善友
