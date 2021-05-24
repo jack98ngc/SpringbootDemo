@@ -120,4 +120,11 @@ public class BookApp {
     public int deleteByJPQL(@RequestParam long id) {
         return bookService.deleteByJPQL(id);
     }
+    
+    @PostMapping("/books/by18-1")
+    public int deleteByJPQL(@RequestParam long id, @RequestParam int status, @RequestParam long uid) {
+        return bookService.deleteAndUpdate(id, status, uid);
+    }
+    
+    
 }

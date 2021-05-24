@@ -73,4 +73,13 @@ public class BookService {
     public int deleteByJPQL(long id) {
         return bookRepository.deleteByJPQL(id);
     }
+    
+    @Transactional
+    public int deleteAndUpdate(long id, int status, long uid) {
+        int dcount = bookRepository.deleteByJPQL(id);
+        
+        int ucount = bookRepository.updateByJPQL(status, uid);
+        
+        return dcount + ucount;
+    }
 }

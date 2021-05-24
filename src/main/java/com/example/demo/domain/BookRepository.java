@@ -31,11 +31,11 @@ public interface BookRepository extends JpaRepository<Book,Long>{
     
     @Modifying
     @Query("update Book b set b.status =?1 where b.id =?2")
-//    @Transactional  /*此處也可設定Transactional*/
+//    @Transactional  /*此處也可設定Transactional，service層若也有設定交易此處設定將被覆蓋*/
     int updateByJPQL(int status, long id);
     
     @Modifying
     @Query("delete from Book b where b.id =?1")
-//    @Transactional  /*此處也可設定Transactional*/
+//    @Transactional  /*此處也可設定Transactional，service層若也有設定交易此處設定將被覆蓋*/
     int deleteByJPQL(long id);
 }
