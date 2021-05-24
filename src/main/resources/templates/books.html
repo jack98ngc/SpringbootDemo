@@ -33,7 +33,8 @@
 	        
 	            <tr th:each="book,iterStat:${books}"> <!--th:class="${iterStat.even}? 'bg-success'"-->
 	                <td th:text="${iterStat.count}">1</td>
-	                <td th:text="${book.name}"></td>
+<!-- 	                <td><a href="" th:text="${book.name}" th:href="@{/books/{id}(id=${book.id})}"></a></td> -->
+	                <td><a href="" th:text="${book.name}" th:href="@{'/books/' + ${book.id}}"></a></td>
 	                <td th:text="${book.author}"></td>
 	                <td th:text="${book.description}"></td>
 	                <td th:switch="${book.status}">
