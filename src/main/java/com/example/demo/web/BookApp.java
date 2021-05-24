@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.domain.Book;
+import com.example.demo.domain.BookRepository;
 import com.example.demo.service.BookService;
 
 @RestController
@@ -78,5 +79,25 @@ public class BookApp {
     @DeleteMapping("/books/{id}")
     public void deleteOne(@PathVariable long id) {
         bookService.deleteOne(id);
+    }
+    
+    @PostMapping("/books/by")
+    public List<Book> findByAuthor(@RequestParam String author) {
+        return bookService.findByAuthor(author);
+    }
+
+    @PostMapping("/books/by2")
+    public List<Book> findByAuthorStatus(@RequestParam String author, @RequestParam int status) {
+        return bookService.findByAuthorAndStatus(author, status);
+    }
+
+    @PostMapping("/books/by3")
+    public List<Book> findByDescrptionEndsWith(@RequestParam String description) {
+        return bookService.findByDescriptionEndsWith(description);
+    }
+
+    @PostMapping("/books/by4")
+    public List<Book> findByDescrptionContains(@RequestParam String description) {
+        return bookService.findByDescriptionContains(description);
     }
 }
