@@ -43,7 +43,15 @@ public class BookController {
     }
     
     @GetMapping("/books/input")
-    public String inputPage() {
+    public String inputPage(Model model) {
+        model.addAttribute("book", new Book());
+        return "input";
+    }
+    
+    @GetMapping("/books/{id}/input")
+    public String inputEditPage(@PathVariable long id, Model model) {
+        Book book = bookService.findOne(id);
+        model.addAttribute("book", book);
         return "input";
     }
     
