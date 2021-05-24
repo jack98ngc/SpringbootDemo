@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<title>書單詳情</title>
+</head>
+<body th:object="${book}">
+    <div>
+        <p>
+            <strong>書名:</strong><span th:text="*{name}">xx</span>
+        </p>
+        <p>
+            <strong>作者:</strong><span th:text="*{author}">bb</span>
+        </p>
+        <p>
+            <strong>說明:</strong><span th:text="*{description}">cc</span>
+        </p>
+        <p>
+            <strong>狀態:</strong><span th:text="*{status}">dd</span>
+        </p>
+    </div>
+</body>
+</html>
