@@ -110,4 +110,14 @@ public class BookApp {
     public List<Book> findBySQL(@RequestParam int len) {
         return bookService.findBySQL(len);
     }
+
+    @PostMapping("/books/by17-1")
+    public int updateByJPQL(@RequestParam int status, @RequestParam long id) {
+        return bookService.updateByJPQL(status, id);
+    }
+
+    @PostMapping("/books/by17-2")
+    public int deleteByJPQL(@RequestParam long id) {
+        return bookService.deleteByJPQL(id);
+    }
 }

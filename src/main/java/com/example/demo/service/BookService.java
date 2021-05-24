@@ -9,6 +9,8 @@ package com.example.demo.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,5 +62,15 @@ public class BookService {
 
     public List<Book> findBySQL(int len){
         return bookRepository.findBySQL(len);
+    }
+    
+    @Transactional
+    public int updateByJPQL(int status, long id) {
+        return bookRepository.updateByJPQL(status, id);
+    }
+
+    @Transactional
+    public int deleteByJPQL(long id) {
+        return bookRepository.deleteByJPQL(id);
     }
 }
