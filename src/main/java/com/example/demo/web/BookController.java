@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.domain.Book;
 import com.example.demo.service.BookService;
@@ -56,8 +57,20 @@ public class BookController {
     }
     
     @PostMapping("/books")
-    public String post(Book book) {
-        bookService.save(book);
+    public String post(Book book, final RedirectAttributes attributes) {
+        Book savedBook = bookService.save(book);
+        if(savedBook !=null) {
+            attributes.addFlashAttribute("message", String.format("『%s』信息提交成功", savedBook.getName()));
+        }
         return "redirect:/books";
     }
+    
+    /**
+     * 若以Model.addAttribute無法正常原因 
+     * 
+     *          POST  --->  redirect  --->  GET
+     *            ↓                          ↓
+     *    model.addAttribute()          can't get message here
+     * 
+     */
 }
