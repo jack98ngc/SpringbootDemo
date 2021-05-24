@@ -100,4 +100,14 @@ public class BookApp {
     public List<Book> findByDescrptionContains(@RequestParam String description) {
         return bookService.findByDescriptionContains(description);
     }
+
+    @PostMapping("/books/by5")
+    public List<Book> findByJPQL(@RequestParam int len) {
+        return bookService.findByJPQL(len);
+    }
+
+    @PostMapping("/books/by6")
+    public List<Book> findBySQL(@RequestParam int len) {
+        return bookService.findBySQL(len);
+    }
 }

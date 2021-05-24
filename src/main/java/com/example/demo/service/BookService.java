@@ -54,4 +54,11 @@ public class BookService {
         return bookRepository.findByDescriptionContains(desc);
     }
     
+    public List<Book> findByJPQL(int len){
+        return bookRepository.findByJPQL(len);
+    }
+
+    public List<Book> findBySQL(int len){
+        return bookRepository.findBySQL(len);
+    }
 }
