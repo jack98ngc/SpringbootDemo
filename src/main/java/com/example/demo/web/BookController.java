@@ -7,18 +7,16 @@
  */
 package com.example.demo.web;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.domain.Book;
@@ -31,11 +29,9 @@ public class BookController {
     private BookService bookService;
     
     @GetMapping("/books")
-    public String list(@RequestParam(defaultValue="0") int page, 
-            @RequestParam(defaultValue="5") int size, 
+    public String list(@PageableDefault(size=5, sort= {"id"}, direction=Sort.Direction.DESC) Pageable pageable, 
             Model model) {
-        Sort sort = new Sort(Sort.Direction.DESC, "id");
-        Page<Book> page1 = bookService.findAllByPage(new PageRequest(page, size, sort));
+        Page<Book> page1 = bookService.findAllByPage(pageable);
         model.addAttribute("page", page1);
         return "books";
     }

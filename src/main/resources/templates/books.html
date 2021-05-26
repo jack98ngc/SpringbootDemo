@@ -59,8 +59,8 @@
 	    
 	    <nav>
 	       <ul class="pager">
-	           <li class="previous"><a href="#" th:href="@{'/books?page='+${page.number-1}}">上一頁</a></li>
-	           <li class="next"><a href="#" th:href="@{/books(page=${page.number+1})}">下一頁</a></li>
+	           <li class="previous"><a href="#" th:href="@{'/books?page='+${page.number-1}}" th:unless="${page.first}">上一頁</a></li>
+	           <li class="next"><a href="#" th:href="@{/books(page=${page.number+1})}" th:unless="${page.last}">下一頁</a></li>
 	       </ul>
 	    </nav>
     </div>
