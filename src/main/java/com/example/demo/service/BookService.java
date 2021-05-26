@@ -31,10 +31,7 @@ public class BookService {
         return bookRepository.findAll();
     }
     
-    public Page<Book> findAllByPage(){
-        
-        Sort sort = new Sort(Sort.Direction.DESC, "id");
-        Pageable pageable = new PageRequest(1, 5, sort);
+    public Page<Book> findAllByPage(Pageable pageable){
         return bookRepository.findAll(pageable);
     }
     
